@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ รีวิว Yoshi Clearance ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ffb3d9;
+    --pink-deep: #ff85c0;
+    --lavender: #c9b8f5;
+    --lavender-deep: #a78bfa;
+    --sky: #b8e8ff;
+    --sky-deep: #7dd3fc;
+    --mint: #b8f5e8;
+    --peach: #ffd6c2;
+    --white: #fff9fe;
+    --text: #5a4a6a;
+    --text-light: #9b88b0;
+    --shadow: 0 8px 32px rgba(180,140,200,0.18);
+    --shadow-hover: 0 16px 48px rgba(180,140,200,0.28);
+    --radius: 24px;
+    --radius-sm: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Mitr', 'Sarabun', sans-serif;
+    background: linear-gradient(135deg, #ffe4f3 0%, #f0e8ff 40%, #ddf4ff 100%);
+    min-height: 100vh;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* Floating deco */
+  .bg-deco {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .bg-deco span {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    filter: blur(40px);
+    animation: floatBlob 8s ease-in-out infinite alternate;
+  }
+  .bg-deco span:nth-child(1) { width:350px;height:350px;background:var(--pink);top:-80px;left:-60px;animation-delay:0s; }
+  .bg-deco span:nth-child(2) { width:280px;height:280px;background:var(--lavender);bottom:10%;right:-60px;animation-delay:2s; }
+  .bg-deco span:nth-child(3) { width:220px;height:220px;background:var(--sky);bottom:-60px;left:30%;animation-delay:4s; }
+  @keyframes floatBlob { from{transform:translateY(0) scale(1)} to{transform:translateY(-30px) scale(1.08)} }
+
+  .wrapper {
+    position: relative; z-index: 1;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 28px 18px 60px;
+  }
+
+  /* Header */
+  .site-header {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: slideDown .6s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes slideDown { from{opacity:0;transform:translateY(-30px)} to{opacity:1;transform:translateY(0)} }
+
+  .logo {
+    font-size: clamp(1.3rem, 5vw, 2.2rem);
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--pink-deep), var(--lavender-deep), var(--sky-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: .01em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .logo-sub {
+    font-size: clamp(.75rem, 3.2vw, .95rem);
+    color: var(--text-light);
+    margin-top: 4px;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    animation: fadeIn .7s .2s both;
+  }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .stat-card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    padding: 16px 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(255,255,255,0.9);
+    min-width: 140px;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--pink-deep), var(--lavender-deep));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .stat-label { font-size: .8rem; color: var(--text-light); margin-top: 2px; font-weight: 300; }
+
+  /* Form card */
+  .form-card {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius);
+    padding: 28px 26px;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(255,255,255,0.95);
+    margin-bottom: 28px;
+    animation: fadeIn .7s .35s both;
+  }
+
+  .form-title {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .heart-rating {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .heart-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform .2s;
+    background: none;
+    border: none;
+    padding: 2px;
+    filter: grayscale(1) opacity(0.35);
+    user-select: none;
+    line-height: 1;
+  }
+  .heart-btn.active { filter: none; }
+  .heart-btn:hover { transform: scale(1.3); filter: none; }
+
+  .form-row { margin-bottom: 14px; }
+  label { display: block; font-size: .85rem; color: var(--text-light); margin-bottom: 6px; font-weight: 400; }
+
+  input[type=text], textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(200,180,240,0.35);
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.82);
+    font-family: inherit;
+    font-size: .95rem;
+    color: var(--text);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+    resize: vertical;
+  }
+  input[type=text]:focus, textarea:focus, select:focus {
+    border-color: var(--lavender-deep);
+    box-shadow: 0 0 0 3px rgba(167,139,250,0.18);
+  }
+  textarea::placeholder { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  textarea { min-height: 100px; }
+
+  /* Color picker row */
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .color-swatch {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform .18s, border-color .18s;
+    flex-shrink: 0;
+  }
+  .color-swatch:hover { transform: scale(1.18); }
+  .color-swatch.selected { border-color: var(--text); }
+
+  /* Image upload */
+  .upload-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 11px 16px;
+    border: 2px dashed rgba(200,180,240,0.5);
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.5);
+    font-size: .9rem;
+    color: var(--text-light);
+    transition: border-color .2s, background .2s;
+  }
+  .upload-label:hover { border-color: var(--lavender-deep); background: rgba(240,232,255,0.5); }
+  .upload-label input { display: none; }
+  .img-preview-wrap { margin-top: 10px; position: relative; display: inline-block; }
+  .img-preview { max-width: 160px; max-height: 120px; border-radius: 14px; object-fit: cover; display: block; box-shadow: var(--shadow); }
+  .img-remove {
+    position: absolute; top:-8px; right:-8px;
+    background: var(--pink-deep); color: #fff; border: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: .85rem; cursor: pointer; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .18s;
+  }
+  .img-remove:hover { background: #d63f8a; }
+
+  /* Nickname */
+  .nick-row { display: flex; gap: 10px; }
+  .nick-row input { flex:1; }
+
+  /* Submit btn */
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--pink-deep), var(--lavender-deep));
+    color: #fff;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(167,139,250,0.35);
+    transition: transform .2s, box-shadow .2s, filter .2s;
+    letter-spacing: .02em;
+    margin-top: 4px;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(167,139,250,0.45); filter: brightness(1.04); }
+  .btn-submit:active { transform: translateY(0); }
+
+  /* Reviews section */
+  .reviews-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Review card */
+  .review-card {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    padding: 22px 22px 18px;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(255,255,255,0.95);
+    margin-bottom: 18px;
+    animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
+    position: relative;
+    overflow: hidden;
+  }
+  @keyframes popIn { from{opacity:0;transform:scale(.92)} to{opacity:1;transform:scale(1)} }
+
+  .card-accent {
+    position: absolute; top:0; left:0; right:0; height:4px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: linear-gradient(90deg, var(--pink), var(--lavender), var(--sky));
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .reviewer-info { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(200,150,200,0.3);
+  }
+  .reviewer-name { font-weight: 500; font-size: .95rem; }
+  .review-date { font-size: .75rem; color: var(--text-light); margin-top: 1px; }
+
+  .review-hearts { font-size: 1.1rem; display: flex; gap: 2px; }
+  .review-body { font-size: .95rem; line-height: 1.65; margin: 10px 0; word-break: break-word; }
+  .review-img { max-width: 100%; max-height: 260px; border-radius: 14px; object-fit: cover; margin-top: 10px; display: block; box-shadow: var(--shadow); }
+
+  /* Actions */
+  .review-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .btn-action {
+    display: flex; align-items: center; gap: 5px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 2px solid rgba(200,180,240,0.35);
+    background: rgba(255,255,255,0.7);
+    font-family: inherit;
+    font-size: .85rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all .2s;
+    user-select: none;
+  }
+  .btn-action:hover { border-color: var(--lavender-deep); color: var(--lavender-deep); background: rgba(240,232,255,0.7); transform: translateY(-1px); }
+  .btn-action.liked { border-color: var(--pink-deep); color: var(--pink-deep); background: rgba(255,230,245,0.7); }
+  .btn-delete { color: #e8a0b0; border-color: rgba(240,180,200,0.3); }
+  .btn-delete:hover { border-color: #e8a0b0; color: #d63f8a; background: rgba(255,228,242,0.7); }
+
+  /* Reply section */
+  .replies-wrap { margin-top: 14px; padding-top: 14px; border-top: 1.5px dashed rgba(200,180,240,0.3); }
+  .reply-item {
+    display: flex; gap: 10px;
+    margin-bottom: 10px;
+    animation: fadeIn .3s;
+  }
+  .reply-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sky), var(--mint));
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem;
+    flex-shrink: 0;
+  }
+  .reply-bubble {
+    background: rgba(240,232,255,0.55);
+    border-radius: 14px 14px 14px 4px;
+    padding: 9px 13px;
+    font-size: .88rem;
+    line-height: 1.5;
+    flex: 1;
+  }
+  .reply-name { font-weight: 500; font-size: .82rem; margin-bottom: 2px; color: var(--lavender-deep); }
+
+  .reply-form { display: flex; gap: 8px; margin-top: 10px; }
+  .reply-form input {
+    flex: 1;
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 2px solid rgba(200,180,240,0.35);
+    background: rgba(255,255,255,0.7);
+    font-family: inherit;
+    font-size: .88rem;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .reply-form input:focus { border-color: var(--lavender-deep); }
+  .btn-reply-send {
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, var(--sky-deep), var(--lavender-deep));
+    color: #fff;
+    font-family: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: transform .18s, box-shadow .18s;
+    white-space: nowrap;
+  }
+  .btn-reply-send:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(125,211,252,0.4); }
+
+  /* Floating hearts animation */
+  .floating-heart {
+    position: fixed;
+    font-size: 1.6rem;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatUp 1.2s ease-out forwards;
+    user-select: none;
+  }
+  @keyframes floatUp {
+    0%   { opacity: 1; transform: translateY(0) scale(1) rotate(-10deg); }
+    60%  { opacity: 0.9; transform: translateY(-80px) scale(1.3) rotate(8deg); }
+    100% { opacity: 0; transform: translateY(-150px) scale(0.8) rotate(-5deg); }
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-light);
+    font-size: .95rem;
+  }
+  .empty-state .big { font-size: 3rem; margin-bottom: 10px; }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .logo { font-size: 1.9rem; }
+    .form-card { padding: 20px 16px; }
+    .review-card { padding: 18px 16px 14px; }
+    .stat-card { padding: 13px 20px; min-width: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-deco">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">✨ รีวิว Yoshi Clearance ✨</div>
+    <div class="logo-sub">ขอบคุณที่อุดหนุน Yoshi Clearance นะคะ 🫶</div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-num" id="avgScore">—</div>
+      <div class="stat-label">❤️ คะแนนเฉลี่ย</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="totalCount">0</div>
+      <div class="stat-label">💬 รีวิวทั้งหมด</div>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="form-card">
+    <div class="form-title">✍️ เขียนรีวิวของคุณ</div>
+
+    <!-- Heart rating -->
+    <div class="form-row">
+      <label>ให้คะแนน</label>
+      <div class="heart-rating" id="heartRating">
+        <button class="heart-btn" data-v="1" onclick="setRating(1)">🤍</button>
+        <button class="heart-btn" data-v="2" onclick="setRating(2)">🤍</button>
+        <button class="heart-btn" data-v="3" onclick="setRating(3)">🤍</button>
+        <button class="heart-btn" data-v="4" onclick="setRating(4)">🤍</button>
+        <button class="heart-btn" data-v="5" onclick="setRating(5)">🤍</button>
+      </div>
+    </div>
+
+    <!-- Nickname -->
+    <div class="form-row">
+      <label>ชื่อผู้รีวิว (ไม่ต้องล็อกอิน)</label>
+      <input type="text" id="nickInput" placeholder="ใส่ชื่อเล่น หรือปล่อยว่างไว้" maxlength="40">
+    </div>
+
+    <!-- Text color -->
+    <div class="form-row">
+      <label>สีข้อความรีวิว</label>
+      <div class="color-row" id="colorRow">
+        <div class="color-swatch selected" data-color="#5a4a6a" style="background:#5a4a6a;" onclick="setColor(this)"></div>
+        <div class="color-swatch" data-color="#b5559e" style="background:#b5559e;" onclick="setColor(this)"></div>
+        <div class="color-swatch" data-color="#6e7fd9" style="background:#6e7fd9;" onclick="setColor(this)"></div>
+        <div class="color-swatch" data-color="#2baacc" style="background:#2baacc;" onclick="setColor(this)"></div>
+        <div class="color-swatch" data-color="#27a27a" style="background:#27a27a;" onclick="setColor(this)"></div>
+        <div class="color-swatch" data-color="#e0603b" style="background:#e0603b;" onclick="setColor(this)"></div>
+        <div class="color-swatch" data-color="#c28a1a" style="background:#c28a1a;" onclick="setColor(this)"></div>
+      </div>
+    </div>
+
+    <!-- Review text -->
+    <div class="form-row">
+      <label>ข้อความรีวิว</label>
+      <textarea id="reviewText" placeholder="ให้❤️x5 เพิ่มรับส่วนลด10บาทในคำสั่งซื้อถัดไป 🎁"></textarea>
+    </div>
+
+    <!-- Image upload -->
+    <div class="form-row">
+      <label class="upload-label">
+        <span>📷</span> <span>แนบรูปภาพ (ไม่บังคับ)</span>
+        <input type="file" id="imgInput" accept="image/*" onchange="previewImg(event)">
+      </label>
+      <div id="imgPreviewWrap" style="display:none" class="img-preview-wrap">
+        <img id="imgPreview" class="img-preview">
+        <button class="img-remove" onclick="removeImg()" title="ลบรูป">×</button>
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="submitReview()">💖 โพสต์รีวิว</button>
+  </div>
+
+  <!-- Reviews list -->
+  <div class="reviews-title">🌸 รีวิวทั้งหมด</div>
+  <div id="reviewsList"></div>
+
+</div>
+
+<script>
+// ---- State ----
+let currentRating = 0;
+let currentColor = '#5a4a6a';
+let imgDataUrl = null;
+let reviews = [];
+
+const AVATARS = ['🌸','🌷','🌼','💐','🍓','🍡','🧁','🍰','🌈','⭐','🦋','🐱','🐰','🐸','🎀','✨'];
+
+function load() {
+  try { reviews = JSON.parse(localStorage.getItem('kawaii_reviews') || '[]'); } catch(e) { reviews = []; }
+  renderAll();
+}
+
+function save() {
+  try { localStorage.setItem('kawaii_reviews', JSON.stringify(reviews)); } catch(e) {}
+}
+
+// ---- Rating ----
+function setRating(v) {
+  currentRating = v;
+  document.querySelectorAll('#heartRating .heart-btn').forEach((b, i) => {
+    b.textContent = i < v ? '❤️' : '🤍';
+    b.classList.toggle('active', i < v);
+  });
+  spawnHearts(document.querySelector(`#heartRating .heart-btn[data-v="${v}"]`));
+}
+
+// ---- Color ----
+function setColor(el) {
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  currentColor = el.dataset.color;
+}
+
+// ---- Image ----
+function previewImg(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    imgDataUrl = ev.target.result;
+    document.getElementById('imgPreview').src = imgDataUrl;
+    document.getElementById('imgPreviewWrap').style.display = 'inline-block';
+  };
+  reader.readAsDataURL(file);
+}
+function removeImg() {
+  imgDataUrl = null;
+  document.getElementById('imgInput').value = '';
+  document.getElementById('imgPreviewWrap').style.display = 'none';
+}
+
+// ---- Submit ----
+function submitReview() {
+  const text = document.getElementById('reviewText').value.trim();
+  if (!text) { alert('✍️ กรุณาเขียนรีวิวก่อนนะคะ!'); return; }
+  if (!currentRating) { alert('❤️ กรุณาให้คะแนนก่อนนะคะ!'); return; }
+
+  const nick = document.getElementById('nickInput').value.trim() || 'แขกนิรนาม';
+  const review = {
+    id: Date.now(),
+    nick,
+    rating: currentRating,
+    color: currentColor,
+    text,
+    img: imgDataUrl,
+    likes: 0,
+    likedBy: [],
+    replies: [],
+    date: new Date().toLocaleDateString('th-TH', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}),
+    avatar: AVATARS[Math.floor(Math.random() * AVATARS.length)]
+  };
+
+  reviews.unshift(review);
+  save();
+
+  // Reset form
+  document.getElementById('reviewText').value = '';
+  document.getElementById('nickInput').value = '';
+  currentRating = 0;
+  document.querySelectorAll('#heartRating .heart-btn').forEach(b => { b.textContent='🤍'; b.classList.remove('active'); });
+  removeImg();
+  document.querySelectorAll('.color-swatch').forEach((s,i) => s.classList.toggle('selected', i===0));
+  currentColor = '#5a4a6a';
+
+  renderAll();
+  spawnHearts(document.querySelector('.btn-submit'), 8);
+  window.scrollTo({top: document.getElementById('reviewsList').offsetTop - 20, behavior:'smooth'});
+}
+
+// ---- Like ----
+function likeReview(id) {
+  const r = reviews.find(x => x.id === id);
+  if (!r) return;
+  const key = 'liked_' + id;
+  const alreadyLiked = localStorage.getItem(key);
+  if (alreadyLiked) {
+    r.likes = Math.max(0, r.likes - 1);
+    localStorage.removeItem(key);
+  } else {
+    r.likes++;
+    localStorage.setItem(key, '1');
+    spawnHeartsById('like-btn-' + id, 5);
+  }
+  save();
+  renderAll();
+}
+
+// ---- Delete ----
+function deleteReview(id) {
+  if (!confirm('🗑️ ลบรีวิวนี้?')) return;
+  reviews = reviews.filter(x => x.id !== id);
+  save();
+  renderAll();
+}
+
+// ---- Reply ----
+function toggleReplyForm(id) {
+  const wrap = document.getElementById('reply-form-' + id);
+  if (wrap) wrap.style.display = wrap.style.display === 'none' ? 'flex' : 'none';
+}
+
+function submitReply(id) {
+  const input = document.getElementById('reply-input-' + id);
+  const text = input.value.trim();
+  if (!text) return;
+  const r = reviews.find(x => x.id === id);
+  if (!r) return;
+  r.replies.push({
+    id: Date.now(),
+    nick: '익명',
+    text,
+    date: new Date().toLocaleDateString('th-TH', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}),
+    avatar: AVATARS[Math.floor(Math.random() * AVATARS.length)]
+  });
+  save();
+  renderAll();
+}
+
+// ---- Render ----
+function renderAll() {
+  updateStats();
+  renderReviews();
+}
+
+function updateStats() {
+  const total = reviews.length;
+  document.getElementById('totalCount').textContent = total;
+  if (total === 0) { document.getElementById('avgScore').textContent = '—'; return; }
+  const avg = reviews.reduce((s, r) => s + r.rating, 0) / total;
+  document.getElementById('avgScore').textContent = avg.toFixed(1);
+}
+
+function hearts(n) { return '❤️'.repeat(n) + '🤍'.repeat(5 - n); }
+
+function renderReviews() {
+  const list = document.getElementById('reviewsList');
+  if (reviews.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="big">🌸</div>ยังไม่มีรีวิวเลย<br>เป็นคนแรกที่เขียนรีวิวกันเถอะ!</div>`;
+    return;
+  }
+  list.innerHTML = reviews.map(r => {
+    const alreadyLiked = !!localStorage.getItem('liked_' + r.id);
+    const repliesHTML = (r.replies || []).map(rp => `
+      <div class="reply-item">
+        <div class="reply-avatar">${rp.avatar}</div>
+        <div class="reply-bubble">
+          <div class="reply-name">익명</div>
+          ${escHtml(rp.text)}
+        </div>
+      </div>`).join('');
+    return `
+    <div class="review-card" id="card-${r.id}">
+      <div class="card-accent"></div>
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="avatar">${r.avatar}</div>
+          <div>
+            <div class="reviewer-name">${escHtml(r.nick)}</div>
+            <div class="review-date">${r.date}</div>
+          </div>
+        </div>
+        <div class="review-hearts">${hearts(r.rating)}</div>
+      </div>
+      <div class="review-body" style="color:${r.color}">${escHtml(r.text)}</div>
+      ${r.img ? `<img class="review-img" src="${r.img}" alt="รีวิวรูป">` : ''}
+      <div class="review-actions">
+        <button class="btn-action ${alreadyLiked ? 'liked' : ''}" id="like-btn-${r.id}" onclick="likeReview(${r.id})">
+          ${alreadyLiked ? '❤️' : '🤍'} ${r.likes > 0 ? r.likes : ''} ถูกใจ
+        </button>
+        <button class="btn-action" onclick="toggleReplyForm(${r.id})">💬 ตอบกลับ</button>
+        <button class="btn-action btn-delete" onclick="deleteReview(${r.id})">🗑️ ลบ</button>
+      </div>
+      ${(r.replies && r.replies.length) || true ? `
+      <div class="replies-wrap">
+        ${repliesHTML}
+        <div class="reply-form" id="reply-form-${r.id}" style="display:none">
+          <input id="reply-input-${r.id}" type="text" placeholder="พิมพ์ตอบกลับ..." maxlength="200"
+            onkeydown="if(event.key==='Enter') submitReply(${r.id})">
+          <button class="btn-reply-send" onclick="submitReply(${r.id})">ส่ง ✈️</button>
+        </div>
+      </div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,'<br>');
+}
+
+// ---- Floating hearts ----
+function spawnHearts(el, count = 5) {
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const ems = ['❤️','💗','💕','💖','💝','🩷'];
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'floating-heart';
+      h.textContent = ems[Math.floor(Math.random() * ems.length)];
+      h.style.left = (cx + (Math.random() - 0.5) * 60) + 'px';
+      h.style.top  = (cy + window.scrollY + (Math.random() - 0.5) * 20) + 'px';
+      h.style.fontSize = (1.2 + Math.random() * 1) + 'rem';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1300);
+    }, i * 100);
+  }
+}
+
+function spawnHeartsById(elId, count) {
+  const el = document.getElementById(elId);
+  if (el) spawnHearts(el, count);
+}
+
+// ---- Init ----
+load();
+</script>
+</body>
+</html>
